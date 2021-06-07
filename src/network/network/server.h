@@ -2,6 +2,7 @@
 #define NETWORK_SERVER_H
 
 #include <functional>
+#include <string>
 
 namespace network{
 
