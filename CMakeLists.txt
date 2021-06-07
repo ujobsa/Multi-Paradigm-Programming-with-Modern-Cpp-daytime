@@ -10,7 +10,7 @@ INCLUDE_DIRECTORIES(${Boost_INCLUDE_DIRS})
 LINK_DIRECTORIES(${Boost_LIBRARY_DIRS})
 
 SET(CLANG_CPP_VERSION_FLAGS "-std=c++2a")
-SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${CLANG_CPP_VERSION_FLAGS}")
+SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${CLANG_CPP_VERSION_FLAGS} -pthread")
 
 include(CTest)
 enable_testing()
@@ -19,6 +19,8 @@ enable_testing()
 add_subdirectory(src/daytime)
 add_subdirectory(src/helpers)
 add_subdirectory(src/network)
+
+add_compile_options(-Wall -Wextra -pthread -Werror)
 
 add_executable(example_daytime src/main.cpp src/scratch.cpp)
 target_include_directories(example_daytime PRIVATE src/daytime)
